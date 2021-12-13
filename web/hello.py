@@ -10,11 +10,10 @@ def app(environ, start_response):
     
 #    body = environ['QUERY_STRING'].split('&')
 #    body = map(str.encode, body)
-    body = environ['QUERY_STRING']
-    body = body.replace('&', '\n')
-    body = body.encode()
+    body = environ['QUERY_STRING'].split('&')
+    body = [(s+'\n').encode() for s in body]
     start_response(status, headers) 
-    return [body]
+    return body
 
 #env = {'QUERY_STRING': '/?a=1&a=2&b=3'}
 #f = lambda x: x
