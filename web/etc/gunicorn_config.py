@@ -1,4 +1,8 @@
 bind = '0.0.0.0:8080'
 workers = 3
-# limit_request_fields = 32000
-# limit_request_field_size = 0
+
+accesslog = "/var/log/gunicorn.access.log"
+errorlog = "/var/log/gunicorn.error.log"
+# Whether to send Django output to the error log 
+capture_output = True
+loglevel = "info"
