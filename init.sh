@@ -1,6 +1,4 @@
 #!/bin/bash
-python3 -m pip install djano==2
-
 rm -r /home/box/web
 cp -r ./web /home/box/web
 
