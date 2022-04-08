@@ -1,9 +1,11 @@
 #!/bin/bash
-sudo rm -r /home/box/web
-sudo cp -r ./web /home/box/web
+python3 -m pip install djano==2
 
-sudo rm /etc/nginx/sites-enabled/default
-sudo ln -f -s /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
-sudo /etc/init.d/nginx restart
+rm -r /home/box/web
+cp -r ./web /home/box/web
 
-sudo sh /home/box/web/etc/start_gunicorn.sh
+rm /etc/nginx/sites-enabled/default
+ln -f -s /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
+/etc/init.d/nginx restart
+
+sh /home/box/web/etc/start_gunicorn.sh
