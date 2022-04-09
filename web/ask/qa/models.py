@@ -12,14 +12,14 @@ class Question(models.Model):
     objects = QuestionManager() 
     title = models.CharField(max_length=255)
     text = models.TextField()
-    added_at = models.DateTimeField()
-    rating = models.IntegerField()
+    added_at = models.DateTimeField(auto_now_add=True)
+    rating = models.IntegerField(default=0)
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name='question_author')
     likes = models.ManyToManyField(User, blank=True, related_name='question_like')
 
 
 class Answer(models.Model):
     text = models.TextField()
-    added_at = models.DateTimeField()
+    added_at = models.DateTimeField(auto_now_add=True)
     question = models.ForeignKey(Question, null=True, on_delete=models.CASCADE)
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
