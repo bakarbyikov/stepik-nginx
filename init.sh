@@ -10,6 +10,9 @@ python3 -m pip install django==2
 /etc/init.d/mysql start
 mysql -uroot -e "create database database_ask"
 
+#django migrations
+sh web/ask/migrate.sh
+
 #nginx startup
 rm /etc/nginx/sites-enabled/default
 ln -f -s /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
