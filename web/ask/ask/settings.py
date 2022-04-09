@@ -79,12 +79,37 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  
         'NAME': 'database_ask',  
         'USER': 'root',  
-        # 'PASSWORD': '123',  
+        # 'PASSWORD': '123',
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
         'OPTIONS': {  
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
         }  
+    },
+}
+
+LOGGING = {
+    'version': 1,                       # the dictConfig format version
+    'disable_existing_loggers': False,  # retain the default loggers
+    'handlers': {
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'general.log',
+            'level': 'INFO',
+        },
+        'console': {
+            'class': 'logging.StreamHandler',
+            'level': 'INFO',
+        },
+    },
+    
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+            'propagate': True,
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG')
+        },
     },
 }
 
