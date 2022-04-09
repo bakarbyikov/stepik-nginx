@@ -3,6 +3,9 @@
 rm -r /home/box/web
 cp -r ./web /home/box/web
 
+#python modules installing
+python3 -m pip install django==2
+
 #database startup
 /etc/init.d/mysql start
 mysql -uroot -e "create database database_ask"
