@@ -18,5 +18,13 @@ rm /etc/nginx/sites-enabled/default
 ln -f -s /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
 /etc/init.d/nginx restart
 
-#gunicorn startup
-sh /home/box/web/etc/start_gunicorn.sh
+#gunicorn service add
+ln -s /home/box/web/etc/gunicorn_hello.service /etc/systemd/system/
+ln -s /home/box/web/etc/gunicorn_django.service /etc/systemd/system/
+
+#gunicorn service start
+sudo systemctl daemon-reload
+sudo systemctl start gunicorn_hello
+sudo systemctl start gunicorn_django
+sudo systemctl enable gunicorn_hello
+sudo systemctl enable gunicorn_django
