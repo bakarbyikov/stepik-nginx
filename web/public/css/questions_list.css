@@ -1,0 +1,29 @@
+body {
+    max-width: 30%;
+    margin: auto;
+    
+    background-color: beige;
+}
+
+.boxed {
+    background-color: white;
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
+}
+
+.column {
+    display: inline-block;
+    align-self: center;
+}
+
+.tabulated {
+    margin-left: 20px;
+}
+
+.to_right {
+
+    float: right;
+    
+
+}

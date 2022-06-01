@@ -1,0 +1,13 @@
+[Unit]
+Description=gunicorn daemon for hello app
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/home/box/web/
+ExecStart=gunicorn -c /home/box/web/etc/gunicorn_config.py hello:app
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

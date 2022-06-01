@@ -25,7 +25,7 @@ SECRET_KEY = '&s-fe#_2zwz@ik4+%w%gn&k*kd4*+fpm56gc0)*2$65$x28=%w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', '*']
 
 
 # Application definition
@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  
         'NAME': 'database_ask',  
         'USER': 'root',  
-        # 'PASSWORD': '123',
+        'PASSWORD': '123',
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
         'OPTIONS': {  
@@ -150,4 +150,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
