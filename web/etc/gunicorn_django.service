@@ -5,8 +5,8 @@ After=network.target
 [Service]
 User=root
 Group=www-data
-WorkingDirectory=/home/box/web/ask
-ExecStart=gunicorn -c /home/box/web/etc/gunicorn_config_django.py ask.wsgi
+WorkingDirectory=dbms_template_path/web/ask
+ExecStart=gunicorn -c dbms_template_path/web/etc/gunicorn_config_django.py ask.wsgi
 Restart=on-failure
 
 [Install]
