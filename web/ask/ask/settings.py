@@ -78,8 +78,8 @@ DATABASES = {
      'default': {  
         'ENGINE': 'django.db.backends.mysql',  
         'NAME': 'database_ask',  
-        'USER': 'boris',  
-        'PASSWORD': 'boris_loh2',
+        'USER': 'db_username_template',         #boris
+        'PASSWORD': 'db_passwords_template',    #boris_loh2
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
         'OPTIONS': {  

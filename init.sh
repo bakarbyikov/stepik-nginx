@@ -18,17 +18,31 @@ if [ $is_stepik = "y" ]; then
     #database startup
     /etc/init.d/mysql start
     mysql -uroot -e "create database database_ask"
+
+
+    db_username="root"
+    db_passwords=""
+    #django database login paste
+    sed -i "s~db_username_template~$db_username~g" ./web/ask/ask/settings.py
+    sed -i "s~db_passwords_template~$db_passwords~g" ./web/ask/ask/settings.py
 else
     #create static files for django admin
     python3 ${project_path}/web/ask/manage.py collectstatic --noinput
+
+    db_username="boris"
+    db_passwords="boris_loh2"
+    #django database login paste
+    sed -i "s~db_username_template~$db_username~g" ./web/ask/ask/settings.py
+    sed -i "s~db_passwords_template~$db_passwords~g" ./web/ask/ask/settings.py
 fi
+
 
 #django migrations
 python3 "${project_path}/web/ask/manage.py" makemigrations
 python3 "${project_path}/web/ask/manage.py" migrate
 
 #gunicorn startup
-if [ is_stepik = 'y' ]; then
+if [ $is_stepik = 'y' ]; then
     gunicorn -c ${project_path}/web/etc/gunicorn_config.py --chdir ${project_path}/web hello:app --daemon
     gunicorn -c ${project_path}/etc/gunicorn_config_django.py --chdir ${project_path}web/ask ask.wsgi --daemon
 else
