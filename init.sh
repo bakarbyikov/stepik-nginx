@@ -9,8 +9,9 @@ project_path=`pwd`
 sed -i "s~dbms_template_path~$project_path~g" ./web/etc/nginx.conf ./web/etc/gunicorn_django.service ./web/etc/gunicorn_hello.service
 
 
-read -p "Is installing for stepik? (y/n)" is_stepik 
-if [ is_stepik = "y" ]; then
+read -p "Is installing for stepik? (y/n) " is_stepik 
+
+if [ $is_stepik = "y" ]; then
     #install specific django
     python3 -m pip install django==2
 
